@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+        <style>
+            body{
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3rem;
+            }
+            .container{
+                background-color: lightgray;
+                padding: 10px;
+                border: 2px solid;
+                border-radius: 20px;
+            }
+        </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <span id="hr">00</span>
+            <span>:</span>
+            <span id="min">00</span>
+            <span>:</span>
+            <span id="sec">00</span>
+            <span id="ampm">AM</span>
+        </div>
+    </div>
+
+
+    <script>
+
+
+        function displayTime(){
+            let hours = document.getElementById('hr');
+            let minutes = document.getElementById('min');
+            let seconds = document.getElementById('sec');
+            let ampm = document.getElementById('ampm');
+            const date = new Date();
+
+            let hr = date.getHours();
+            const min = padZero(date.getMinutes());
+            const sec = padZero(date.getSeconds());
+            if(hr>12){
+                hr = hr - 12
+                ampm.innerHTML = 'PM'
+            }
+            
+            hours.innerHTML = padZero(hr);
+            minutes.innerHTML = min;
+            seconds.innerHTML = sec;
+ 
+        }
+        displayTime();
+        setInterval(displayTime, 500)
+
+        function padZero(num){
+            return num < 10? "0" + num: num
+
+        }
+ 
+    </script>
+</body>
+</html>
